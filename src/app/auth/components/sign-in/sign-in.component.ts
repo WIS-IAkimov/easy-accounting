@@ -1,10 +1,14 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs';
 
+import { Session } from '../../services/session.service';
+import { takeUntil, tap } from 'rxjs/operators';
+
 
 @Component({
+  selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
   host: {
@@ -13,12 +17,16 @@ import { Subject } from 'rxjs';
 })
 export class SignInComponent implements OnDestroy {
 
+  @Output()
+  public readonly signIn = new EventEmitter<void>();
+
   public readonly loginForm: FormGroup;
 
   private readonly _destroy$: Subject<void> = new Subject();
 
   constructor(
     private readonly _fb: FormBuilder,
+    private readonly _session: Session,
   ) {
     this.loginForm = this._createForm();
   }
@@ -31,13 +39,14 @@ export class SignInComponent implements OnDestroy {
   public login(): void {
     const {email, password} = this.loginForm.value;
 
+    this.signIn.emit();
     // this._session
     //   .create(email, password)
-    //   .pipe(takeUntil(this._destroy$))
-    //   .subscribe(() => {
-    //     const redirectUrl = this._activatedRoute.snapshot.queryParams.redirectUrl;
-    //     this._router.navigateByUrl(redirectUrl || '/');
-    //   });
+    //   .pipe(
+    //     tap(() => this.signIn.emit()),
+    //     takeUntil(this._destroy$),
+    //   )
+    //   .subscribe();
   }
 
   private _createForm(): FormGroup {

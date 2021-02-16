@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignInView } from './views/sign-in/sign-in.view';
 
 const routes: Routes = [
   {
@@ -9,11 +9,7 @@ const routes: Routes = [
     children: [
       {
         path: 'login',
-        component: SignInComponent,
-      },
-      {
-        path: '**',
-        redirectTo: 'login',
+        component: SignInView,
       },
     ],
   },
