@@ -1,0 +1,93 @@
+{
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.js",
+        "*.ts"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "project": [
+          "tsconfig.*?.json"
+        ]
+      },
+      "plugins": [
+        "@typescript-eslint",
+        "@angular-eslint/eslint-plugin"
+      ],
+      "extends": [
+        "plugin:import/typescript",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@angular-eslint/eslint-plugin/recommended",
+        "eslint-config-airbnb/base"
+      ],
+      "rules": {
+        "semi": [
+          "error",
+          "always"
+        ],
+        "max-len": [
+          "error",
+          {
+            "code": 100,
+            "tabWidth": 2,
+            "ignoreUrls": true,
+            "ignoreStrings": false,
+            "ignoreComments": true,
+            "ignoreRegExpLiterals": true,
+            "ignoreTemplateLiterals": true,
+            "ignorePattern": "^import\\s\\{\\s\\w+\\s\\}\\sfrom\\s.+;|^export\\s(\\{\\s\\w+\\s\\}|\\*)\\sfrom\\s.+;$|import\\("
+          }
+        ],
+        "camelcase": [
+          "error",
+          {
+            "ignoreDestructuring": true,
+            "ignoreImports": true
+          }
+        ],
+        "padded-blocks": [
+          "error",
+          {
+            "classes": "always"
+          }
+        ],
+        "import/prefer-default-export": "off",
+        "no-restricted-imports": "off",
+        "import/no-unresolved": "off",
+        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/explicit-member-accessibility": "error"
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "parser": "@angular-eslint/template-parser",
+      "plugins": [
+        "@angular-eslint/template"
+      ],
+      "rules": {
+        "max-len": [
+          "error",
+          {
+            "code": 100,
+            "tabWidth": 2,
+            "ignoreUrls": true,
+            "ignoreStrings": false,
+            "ignoreTemplateLiterals": false,
+            "ignorePattern": "d=\".*\""
+          }
+        ]
+      }
+    }
+  ]
+}

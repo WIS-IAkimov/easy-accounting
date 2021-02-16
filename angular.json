@@ -102,6 +102,16 @@
           "options": {
             "browserTarget": "easy-accounting:build"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/app/**/*.ts",
+              "src/app/**/*.html",
+              "src/app/**/*.component.html"
+            ]
+          }
         }
       }
     }
