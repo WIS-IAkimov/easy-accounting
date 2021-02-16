@@ -1,0 +1,14 @@
+@import '~@angular/material/theming';
+
+$primary-palette: mat-palette($mat-pink) !default;
+$accent-palette: mat-palette($mat-indigo) !default;
+$warning-palette: mat-palette($mat-deep-orange) !default;
+
+
+$theme: mat-light-theme((
+  color: (
+    primary: $primary-palette,
+    accent: $accent-palette,
+    warn: $warning-palette,
+  )
+));
