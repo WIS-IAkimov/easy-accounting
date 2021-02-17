@@ -39,14 +39,13 @@ export class SignInComponent implements OnDestroy {
   public login(): void {
     const {email, password} = this.loginForm.value;
 
-    this.signIn.emit();
-    // this._session
-    //   .create(email, password)
-    //   .pipe(
-    //     tap(() => this.signIn.emit()),
-    //     takeUntil(this._destroy$),
-    //   )
-    //   .subscribe();
+    this._session
+      .login(email, password)
+      .pipe(
+        tap(() => this.signIn.emit()),
+        takeUntil(this._destroy$),
+      )
+      .subscribe();
   }
 
   private _createForm(): FormGroup {
