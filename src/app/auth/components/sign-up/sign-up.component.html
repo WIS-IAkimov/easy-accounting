@@ -1,0 +1,35 @@
+<mat-card>
+  <form class="py-4" [formGroup]="form" (ngSubmit)="signup()">
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        placeholder="Enter email"
+        formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="password"
+        placeholder="Enter password"
+        formControlName="password">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Confirm password</mat-label>
+      <input
+        matInput
+        type="password"
+        placeholder="Enter password again"
+        formControlName="confirmPassword">
+
+      <mat-error *ngIf="confirmPasswordControl.hasError('notMatch')">Passwords don't match</mat-error>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" type="submit">Sign up</button>
+  </form>
+
+</mat-card>
