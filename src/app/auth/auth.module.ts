@@ -8,9 +8,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 
 import { AuthRoutingModule } from './auth-routing.module';
-import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignInContainer } from './containers/sign-in/sign-in.container';
 import { SignInView } from './views/sign-in/sign-in.view';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { SignUpContainer } from './containers/sign-up/sign-up.container';
 import { SignUpView } from './views/sign-up/sign-up.view';
 import { SessionDataService } from './services/session-data.service';
 import { Session } from './services/session.service';
@@ -21,8 +21,8 @@ import { AuthView } from './views/auth/auth.view';
 
 @NgModule({
   declarations: [
-    SignInComponent,
-    SignUpComponent,
+    SignInContainer,
+    SignUpContainer,
     SignUpView,
     SignInView,
     AuthView,

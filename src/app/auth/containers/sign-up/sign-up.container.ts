@@ -10,11 +10,11 @@ import { ISignUpRequest } from '../../interfaces/sign-up.request.interface';
 
 @Component({
   selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss'],
+  templateUrl: './sign-up.container.html',
+  styleUrls: ['./sign-up.container.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignUpComponent implements OnDestroy {
+export class SignUpContainer implements OnDestroy {
 
   @Output()
   public readonly signIn = new EventEmitter<void>();

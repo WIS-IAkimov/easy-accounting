@@ -9,11 +9,11 @@ import { Session } from '../../services/session.service';
 
 @Component({
   selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss'],
+  templateUrl: './sign-in.container.html',
+  styleUrls: ['./sign-in.container.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignInComponent implements OnDestroy {
+export class SignInContainer implements OnDestroy {
 
   @Output()
   public readonly signIn = new EventEmitter<void>();
