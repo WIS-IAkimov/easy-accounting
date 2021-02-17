@@ -16,6 +16,7 @@ import { SessionDataService } from './services/session-data.service';
 import { Session } from './services/session.service';
 import { AuthorizedGuard } from './guards/authorized.guard';
 import { UnauthorizedGuard } from './guards/unauthorized.guard';
+import { AuthView } from './views/auth/auth.view';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { UnauthorizedGuard } from './guards/unauthorized.guard';
     SignUpComponent,
     SignUpView,
     SignInView,
+    AuthView,
   ],
   imports: [
     CommonModule,

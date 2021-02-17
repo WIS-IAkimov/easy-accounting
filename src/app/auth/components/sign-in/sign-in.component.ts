@@ -1,4 +1,4 @@
-import { Component, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs';
@@ -11,9 +11,7 @@ import { Session } from '../../services/session.service';
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
-  host: {
-    class: 'd-flex justify-content-center align-items-center min-vh-100',
-  },
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignInComponent implements OnDestroy {
 

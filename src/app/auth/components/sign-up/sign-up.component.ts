@@ -1,4 +1,4 @@
-import { Component, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs';
@@ -12,9 +12,7 @@ import { ISignUpRequest } from '../../interfaces/sign-up.request.interface';
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
-  host: {
-    class: 'd-flex justify-content-center align-items-center min-vh-100',
-  },
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignUpComponent implements OnDestroy {
 

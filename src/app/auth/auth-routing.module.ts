@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SignInView } from './views/sign-in/sign-in.view';
 import { SignUpView } from './views/sign-up/sign-up.view';
+import { AuthView } from './views/auth/auth.view';
 
 const routes: Routes = [
   {
     path: '',
+    component: AuthView,
     children: [
       {
         path: 'login',
