@@ -1,5 +1,9 @@
 <mat-card>
   <form class="py-4" [formGroup]="loginForm" (ngSubmit)="login()">
+    <ng-container *ngFor="let error of errorList">
+      <p class="text-danger">{{error}}</p>
+    </ng-container>
+
     <mat-form-field>
       <mat-label>Email</mat-label>
       <input

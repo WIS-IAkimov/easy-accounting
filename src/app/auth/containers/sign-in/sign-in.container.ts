@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
 import { Session } from '../../services/session.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -20,10 +21,13 @@ export class SignInContainer implements OnDestroy {
 
   public readonly loginForm: FormGroup;
 
+  public errorList: string[] = [];
+
   private readonly _destroy$: Subject<void> = new Subject();
 
   constructor(
     private readonly _fb: FormBuilder,
+    private readonly _cdr: ChangeDetectorRef,
     private readonly _session: Session,
   ) {
     this.loginForm = this._createForm();
@@ -44,7 +48,10 @@ export class SignInContainer implements OnDestroy {
     this._session
       .login(email, password)
       .pipe(
-        tap(() => this.signIn.emit()),
+        tap({
+          next: () => this.signIn.emit(),
+          error: this._handleError.bind(this),
+        }),
         takeUntil(this._destroy$),
       )
       .subscribe();
@@ -55,6 +62,11 @@ export class SignInContainer implements OnDestroy {
       email: ['', Validators.required],
       password: ['', Validators.required],
     });
+  }
+
+  private _handleError(error: HttpErrorResponse): void {
+    this.errorList = error.error.map((item) => item.message);
+    this._cdr.markForCheck();
   }
 
 }
