@@ -1,6 +1,7 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,6 +18,7 @@ import { Session } from './services/session.service';
 import { AuthorizedGuard } from './guards/authorized.guard';
 import { UnauthorizedGuard } from './guards/unauthorized.guard';
 import { AuthView } from './views/auth/auth.view';
+import { ApiTokenInterceptor } from './interceptors/api-token.interceptor';
 
 
 @NgModule({
@@ -50,6 +52,11 @@ export class AuthModule {
         SessionDataService,
         AuthorizedGuard,
         UnauthorizedGuard,
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: ApiTokenInterceptor,
+          multi: true,
+        },
       ],
     };
   }
