@@ -6,13 +6,7 @@ export class SessionDataService {
   constructor() { }
 
   public get(): string {
-    const dataJson = localStorage.getItem('token');
-
-    if (dataJson) {
-      return JSON.parse(dataJson);
-    }
-
-    return null;
+    return localStorage.getItem('token');
   }
 
   public set(token: string): void {
