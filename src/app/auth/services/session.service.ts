@@ -1,0 +1,63 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import { Observable, of } from 'rxjs';
+import { tap, mapTo, pluck } from 'rxjs/operators';
+
+import { SessionDataService } from './session-data.service';
+import { ISignUpRequest } from '../interfaces/sign-up.request.interface';
+
+@Injectable()
+export class Session {
+
+  public token: string;
+
+  public constructor(
+    private readonly _httpClient: HttpClient,
+    private readonly _sessionDataService: SessionDataService,
+  ) {
+    this.token = this._sessionDataService.get();
+  }
+
+  public login(email: string, password: string): Observable<boolean> {
+    return this._httpClient.post<unknown>('user/login', { email, password })
+      .pipe(
+        pluck('user'),
+        tap(({ token }) => {
+          if (token) {
+            this.token = token;
+            this._sessionDataService.set(token);
+          }
+        }),
+        mapTo(true),
+      );
+  }
+
+  public signup(data: ISignUpRequest): Observable<boolean> {
+    return this._httpClient.post<unknown>('user/signup', data)
+      .pipe(
+        pluck('user'),
+        tap(({ token }) => {
+          if (token) {
+            this.token = token;
+            this._sessionDataService.set(token);
+          }
+        }),
+        mapTo(true),
+      );
+  }
+
+  public logout(): Observable<void> {
+    this._sessionDataService.clear();
+    this.token = null;
+
+    return of(null);
+  }
+
+  public check(): Observable<boolean> {
+    const isAuthorized = this._sessionDataService.check();
+
+    return of(isAuthorized);
+  }
+
+}

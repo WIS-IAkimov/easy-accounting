@@ -1,0 +1,32 @@
+<mat-card>
+  <form class="py-4" [formGroup]="loginForm" (ngSubmit)="login()">
+    <ng-container *ngFor="let error of errorList">
+      <p class="text-danger">{{error}}</p>
+    </ng-container>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="Enter email"
+        formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="password"
+        placeholder="Enter password"
+        formControlName="password">
+    </mat-form-field>
+
+    <button mat-flat-button color="primary" type="submit">Sign in</button>
+
+    <div class="mt-2 text-center">
+      <a routerLink="../signup">Create an account.</a>
+    </div>
+  </form>
+
+</mat-card>
