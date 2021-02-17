@@ -2,9 +2,9 @@ import { Component, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs';
+import { takeUntil, tap } from 'rxjs/operators';
 
 import { Session } from '../../services/session.service';
-import { takeUntil, tap } from 'rxjs/operators';
 
 
 @Component({
@@ -37,6 +37,10 @@ export class SignInComponent implements OnDestroy {
   }
 
   public login(): void {
+    if (this.loginForm.invalid) {
+      return;
+    }
+
     const {email, password} = this.loginForm.value;
 
     this._session
