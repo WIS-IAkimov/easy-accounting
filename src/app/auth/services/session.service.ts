@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
-import { tap, mapTo } from 'rxjs/operators';
+import { tap, mapTo, pluck } from 'rxjs/operators';
 
 import { SessionDataService } from './session-data.service';
 import { ISignUpRequest } from '../interfaces/sign-up.request.interface';
@@ -20,10 +20,11 @@ export class Session {
     this.token = this._sessionDataService.get();
   }
 
-  public login(email: string, password: string): Observable<true> {
-    return this._httpClient.post<string>('user/login', {email, password})
+  public login(email: string, password: string): Observable<boolean> {
+    return this._httpClient.post<unknown>('user/login', {email, password})
       .pipe(
-        tap((token) => {
+        pluck('user'),
+        tap(({token}) => {
           this.token = token;
           this._sessionDataService.set(token);
         }),
@@ -32,9 +33,10 @@ export class Session {
   }
 
   public signup(data: ISignUpRequest): Observable<boolean> {
-    return this._httpClient.post<string>('user/signup', data)
+    return this._httpClient.post<unknown>('user/signup', data)
       .pipe(
-        tap((token) => {
+        pluck('user'),
+        tap(({ token }) => {
           this.token = token;
           this._sessionDataService.set(token);
         }),
