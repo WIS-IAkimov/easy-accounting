@@ -28,6 +28,8 @@
         type="email"
         placeholder="Enter email"
         formControlName="email">
+
+      <mat-error *ngIf="emailControl.hasError('server')">{{ serverErrors.email }}</mat-error>
     </mat-form-field>
 
     <mat-form-field>

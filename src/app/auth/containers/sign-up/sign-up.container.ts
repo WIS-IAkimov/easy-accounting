@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnDestroy, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
@@ -17,19 +18,25 @@ import { ISignUpRequest } from '../../interfaces/sign-up.request.interface';
 export class SignUpContainer implements OnDestroy {
 
   @Output()
-  public readonly signIn = new EventEmitter<void>();
+  public readonly signUp = new EventEmitter<void>();
 
   public readonly form: FormGroup;
+
+  public serverErrors: Record<string, string>;
 
   private readonly _destroy$: Subject<void> = new Subject();
 
   constructor(
     private readonly _fb: FormBuilder,
+    private readonly _cdr: ChangeDetectorRef,
     private readonly _session: Session,
   ) {
     this.form = this._createForm();
   }
 
+  public get emailControl(): AbstractControl {
+    return this.form?.get('email');
+  }
   public get confirmPasswordControl(): AbstractControl {
     return this.form?.get('confirmPassword');
   }
@@ -53,7 +60,10 @@ export class SignUpContainer implements OnDestroy {
     this._session
       .signup(data)
       .pipe(
-        tap(() => this.signIn.emit()),
+        tap({
+          next: () => this.signUp.emit(),
+          error: this._handleError.bind(this),
+        }),
         takeUntil(this._destroy$),
       )
       .subscribe();
@@ -84,6 +94,22 @@ export class SignUpContainer implements OnDestroy {
 
       return isMatch ? null : {notMatch: true};
     }
+  }
+
+  private _handleError(error: HttpErrorResponse): void {
+    this.serverErrors = {};
+    error.error.forEach((errorItem) => {
+      const control = this.form.get(errorItem.field);
+
+      if (!control) {
+        return;
+      }
+
+      control.setErrors({ server: true });
+      this.serverErrors[errorItem.field] = errorItem.message;
+    });
+
+    this._cdr.markForCheck();
   }
 
 }
