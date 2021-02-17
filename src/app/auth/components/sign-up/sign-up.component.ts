@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
 import { Session } from '../../services/session.service';
+import { ISignUpRequest } from '../../interfaces/sign-up.request.interface';
 
 
 @Component({
@@ -49,10 +50,10 @@ export class SignUpComponent implements OnDestroy {
       return;
     }
 
-    const {email, password} = this.form.value;
+    const data = this._getFormData();
 
     this._session
-      .signup(email, password)
+      .signup(data)
       .pipe(
         tap(() => this.signIn.emit()),
         takeUntil(this._destroy$),
@@ -62,10 +63,21 @@ export class SignUpComponent implements OnDestroy {
 
   private _createForm(): FormGroup {
     return this._fb.group({
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       confirmPassword: ['', this._matchPasswordsFn()],
     });
+  }
+
+  private _getFormData(): ISignUpRequest {
+    return {
+      name: this.form.value.name,
+      surname: this.form.value.surname,
+      email: this.form.value.email,
+      password: this.form.value.password,
+    }
   }
 
   private _matchPasswordsFn(): ValidatorFn {

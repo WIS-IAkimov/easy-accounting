@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { tap, mapTo } from 'rxjs/operators';
 
 import { SessionDataService } from './session-data.service';
+import { ISignUpRequest } from '../interfaces/sign-up.request.interface';
 
 
 @Injectable()
@@ -30,8 +31,8 @@ export class Session {
       )
   }
 
-  public signup(email: string, password: string): Observable<true> {
-    return this._httpClient.post<string>('user/signup', {email, password})
+  public signup(data: ISignUpRequest): Observable<boolean> {
+    return this._httpClient.post<string>('user/signup', data)
       .pipe(
         tap((token) => {
           this.token = token;
