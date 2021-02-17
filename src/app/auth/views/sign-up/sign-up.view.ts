@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   templateUrl: './sign-up.view.html',
@@ -10,10 +10,13 @@ export class SignUpView {
 
   constructor(
     private readonly _router: Router,
+    private readonly _activatedRoute: ActivatedRoute,
   ) { }
 
   public onSignIn(): void {
-    this._router.navigate(['/']);
+    this._router.navigate(['login'], {
+      relativeTo: this._activatedRoute.parent,
+    });
   }
 
 }

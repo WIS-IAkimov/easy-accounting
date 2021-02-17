@@ -25,8 +25,10 @@ export class Session {
       .pipe(
         pluck('user'),
         tap(({token}) => {
-          this.token = token;
-          this._sessionDataService.set(token);
+          if (token) {
+            this.token = token;
+            this._sessionDataService.set(token);
+          }
         }),
         mapTo(true),
       )
@@ -37,8 +39,10 @@ export class Session {
       .pipe(
         pluck('user'),
         tap(({ token }) => {
-          this.token = token;
-          this._sessionDataService.set(token);
+          if (token) {
+            this.token = token;
+            this._sessionDataService.set(token);
+          }
         }),
         mapTo(true),
       )
