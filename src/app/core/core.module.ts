@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AuthModule } from '../auth';
 
+import { ApiUrlInterceptor } from './interceptors/api-url.interceptor';
 
 
 @NgModule({
@@ -13,6 +14,13 @@ import { AuthModule } from '../auth';
     BrowserAnimationsModule,
     HttpClientModule,
     AuthModule.forRoot(),
-  ]
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiUrlInterceptor,
+      multi: true,
+    },
+  ],
 })
 export class CoreModule { }

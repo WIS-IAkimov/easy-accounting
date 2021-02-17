@@ -20,7 +20,7 @@ export class Session {
   }
 
   public login(email: string, password: string): Observable<true> {
-    return this._httpClient.post<string>('login', {email, password})
+    return this._httpClient.post<string>('user/login', {email, password})
       .pipe(
         tap((token) => {
           this.token = token;
@@ -31,7 +31,7 @@ export class Session {
   }
 
   public signup(email: string, password: string): Observable<true> {
-    return this._httpClient.post<string>('signup', {email, password})
+    return this._httpClient.post<string>('user/signup', {email, password})
       .pipe(
         tap((token) => {
           this.token = token;
