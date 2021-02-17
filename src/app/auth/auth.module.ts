@@ -20,7 +20,6 @@ import { UnauthorizedGuard } from './guards/unauthorized.guard';
 import { AuthView } from './views/auth/auth.view';
 import { ApiTokenInterceptor } from './interceptors/api-token.interceptor';
 
-
 @NgModule({
   declarations: [
     SignInContainer,
@@ -39,7 +38,7 @@ import { ApiTokenInterceptor } from './interceptors/api-token.interceptor';
     MatCardModule,
 
     AuthRoutingModule,
-  ]
+  ],
 })
 export class AuthModule {
 

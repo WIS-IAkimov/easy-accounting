@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-auth',
@@ -9,11 +9,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
     class: 'd-flex justify-content-center align-items-center vh-100',
   },
 })
-export class AuthView implements OnInit {
+export class AuthView {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  public constructor() { }
 
 }

@@ -4,11 +4,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   templateUrl: './sign-up.view.html',
   styleUrls: ['./sign-up.view.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignUpView {
 
-  constructor(
+  public constructor(
     private readonly _router: Router,
     private readonly _activatedRoute: ActivatedRoute,
   ) { }

@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 @Component({
   templateUrl: './sign-in.view.html',
   styleUrls: ['./sign-in.view.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignInView {
 
-  constructor(
+  public constructor(
     private readonly _router: Router,
   ) { }
 

@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppView } from './app.view';
 import { CoreModule } from './core';
 
-
 @NgModule({
   declarations: [
     AppView,

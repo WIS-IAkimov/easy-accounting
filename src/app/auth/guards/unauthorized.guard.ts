@@ -1,27 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Router, UrlTree, CanActivate, ActivatedRouteSnapshot } from '@angular/router';
+import { Router, UrlTree, CanActivate } from '@angular/router';
 
 import { map } from 'rxjs/operators';
 
-import { Session } from '../services/session.service';
 import { Observable } from 'rxjs';
-
+import { Session } from '../services/session.service';
 
 @Injectable()
 export class UnauthorizedGuard implements CanActivate {
 
-  constructor(
+  public constructor(
     private readonly _router: Router,
     private readonly _session: Session,
   ) {}
 
-  public canActivate(route: ActivatedRouteSnapshot): Observable<boolean | UrlTree> {
+  public canActivate(): Observable<boolean | UrlTree> {
     return this._session
       .check()
       .pipe(
-        map((isAuth) => {
-          return !isAuth || this._redirectAuthorizedTo();
-        }),
+        map((isAuth) => !isAuth || this._redirectAuthorizedTo()),
       );
   }
 

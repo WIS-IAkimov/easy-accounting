@@ -12,11 +12,10 @@ import { map } from 'rxjs/operators';
 
 import { Session } from '../services/session.service';
 
-
 @Injectable()
 export class AuthorizedGuard implements CanActivate {
 
-  constructor(
+  public constructor(
     private readonly _router: Router,
     private readonly _session: Session,
   ) {}
@@ -28,9 +27,7 @@ export class AuthorizedGuard implements CanActivate {
     return this._session
       .check()
       .pipe(
-        map((isAuth) => {
-          return isAuth || this._redirectUnauthorizedTo(state);
-        }),
+        map((isAuth) => isAuth || this._redirectUnauthorizedTo(state)),
       );
   }
 

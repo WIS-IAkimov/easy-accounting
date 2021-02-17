@@ -7,13 +7,12 @@ import { tap, mapTo, pluck } from 'rxjs/operators';
 import { SessionDataService } from './session-data.service';
 import { ISignUpRequest } from '../interfaces/sign-up.request.interface';
 
-
 @Injectable()
 export class Session {
 
   public token: string;
 
-  constructor(
+  public constructor(
     private readonly _httpClient: HttpClient,
     private readonly _sessionDataService: SessionDataService,
   ) {
@@ -21,17 +20,17 @@ export class Session {
   }
 
   public login(email: string, password: string): Observable<boolean> {
-    return this._httpClient.post<unknown>('user/login', {email, password})
+    return this._httpClient.post<unknown>('user/login', { email, password })
       .pipe(
         pluck('user'),
-        tap(({token}) => {
+        tap(({ token }) => {
           if (token) {
             this.token = token;
             this._sessionDataService.set(token);
           }
         }),
         mapTo(true),
-      )
+      );
   }
 
   public signup(data: ISignUpRequest): Observable<boolean> {
@@ -45,7 +44,7 @@ export class Session {
           }
         }),
         mapTo(true),
-      )
+      );
   }
 
   public logout(): Observable<void> {

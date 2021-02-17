@@ -7,7 +7,6 @@ import { AuthModule } from '../auth';
 
 import { ApiUrlInterceptor } from './interceptors/api-url.interceptor';
 
-
 @NgModule({
   imports: [
     BrowserModule,

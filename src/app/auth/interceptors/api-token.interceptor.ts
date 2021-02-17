@@ -10,11 +10,10 @@ import { Observable } from 'rxjs';
 
 import { Session } from '../services/session.service';
 
-
 @Injectable()
 export class ApiTokenInterceptor implements HttpInterceptor {
 
-  constructor(
+  public constructor(
     private readonly _session: Session,
   ) {}
 
@@ -27,7 +26,7 @@ export class ApiTokenInterceptor implements HttpInterceptor {
   }
 
   private _applyToken(request: HttpRequest<unknown>): HttpRequest<unknown> {
-    const token = this._session.token;
+    const { token } = this._session;
 
     if (!token) {
       return request;

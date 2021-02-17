@@ -1,5 +1,9 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnDestroy, Output } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import {
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnDestroy, Output,
+} from '@angular/core';
+import {
+  AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators,
+} from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import { Subject } from 'rxjs';
@@ -7,7 +11,6 @@ import { takeUntil, tap } from 'rxjs/operators';
 
 import { Session } from '../../services/session.service';
 import { ISignUpRequest } from '../../interfaces/sign-up.request.interface';
-
 
 @Component({
   selector: 'app-sign-up',
@@ -26,7 +29,7 @@ export class SignUpContainer implements OnDestroy {
 
   private readonly _destroy$: Subject<void> = new Subject();
 
-  constructor(
+  public constructor(
     private readonly _fb: FormBuilder,
     private readonly _cdr: ChangeDetectorRef,
     private readonly _session: Session,
@@ -37,6 +40,7 @@ export class SignUpContainer implements OnDestroy {
   public get emailControl(): AbstractControl {
     return this.form?.get('email');
   }
+
   public get confirmPasswordControl(): AbstractControl {
     return this.form?.get('confirmPassword');
   }
@@ -85,15 +89,15 @@ export class SignUpContainer implements OnDestroy {
       surname: this.form.value.surname,
       email: this.form.value.email,
       password: this.form.value.password,
-    }
+    };
   }
 
   private _matchPasswordsFn(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const isMatch = this.passwordControl?.value === control.value;
 
-      return isMatch ? null : {notMatch: true};
-    }
+      return isMatch ? null : { notMatch: true };
+    };
   }
 
   private _handleError(error: HttpErrorResponse): void {

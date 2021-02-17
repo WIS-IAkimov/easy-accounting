@@ -50,7 +50,9 @@
         placeholder="Enter password again"
         formControlName="confirmPassword">
 
-      <mat-error *ngIf="confirmPasswordControl.hasError('notMatch')">Passwords don't match</mat-error>
+      <mat-error *ngIf="confirmPasswordControl.hasError('notMatch')">
+        Passwords don't match
+      </mat-error>
     </mat-form-field>
 
     <button mat-flat-button color="primary" type="submit">Sign up</button>

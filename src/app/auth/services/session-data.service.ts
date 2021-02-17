@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class SessionDataService {
 
-  constructor() { }
+  public constructor() { }
 
   public get(): string {
     return localStorage.getItem('token');
@@ -22,4 +22,5 @@ export class SessionDataService {
   public clear(): void {
     localStorage.removeItem('token');
   }
+
 }

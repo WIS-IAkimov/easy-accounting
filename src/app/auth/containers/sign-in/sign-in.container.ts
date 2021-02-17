@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnDestroy, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnDestroy, Output,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -6,7 +8,6 @@ import { Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
 import { Session } from '../../services/session.service';
-
 
 @Component({
   selector: 'app-sign-in',
@@ -25,7 +26,7 @@ export class SignInContainer implements OnDestroy {
 
   private readonly _destroy$: Subject<void> = new Subject();
 
-  constructor(
+  public constructor(
     private readonly _fb: FormBuilder,
     private readonly _cdr: ChangeDetectorRef,
     private readonly _session: Session,
@@ -43,7 +44,7 @@ export class SignInContainer implements OnDestroy {
       return;
     }
 
-    const {email, password} = this.loginForm.value;
+    const { email, password } = this.loginForm.value;
 
     this._session
       .login(email, password)
