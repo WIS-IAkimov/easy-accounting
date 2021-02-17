@@ -64,7 +64,16 @@
         "no-restricted-imports": "off",
         "import/no-unresolved": "off",
         "@typescript-eslint/no-explicit-any": "error",
-        "@typescript-eslint/explicit-member-accessibility": "error"
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/explicit-member-accessibility": "error",
+        "@angular-eslint/no-host-metadata-property": "off",
+        "@angular-eslint/component-class-suffix": "off",
+        "no-useless-constructor": "off",
+        "no-underscore-dangle": "off",
+        "no-multiple-empty-lines": "off",
+        "import/extensions": "off",
+        "class-methods-use-this": "off",
+        "no-empty-function": "off"
       }
     },
     {
