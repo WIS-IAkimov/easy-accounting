@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { tap, mapTo, pluck } from 'rxjs/operators';
 
 import { SessionDataService } from './session-data.service';
@@ -12,11 +12,21 @@ export class Session {
 
   public token: string;
 
+  private readonly _isAuthorized$ = new BehaviorSubject<boolean>(false);
+
   public constructor(
     private readonly _httpClient: HttpClient,
     private readonly _sessionDataService: SessionDataService,
   ) {
     this.token = this._sessionDataService.get();
+
+    if (this.token) {
+      this._isAuthorized$.next(true);
+    }
+  }
+
+  public get isAuthorized$(): Observable<boolean> {
+    return this._isAuthorized$.asObservable();
   }
 
   public login(email: string, password: string): Observable<boolean> {
@@ -26,6 +36,7 @@ export class Session {
         tap(({ token }) => {
           if (token) {
             this.token = token;
+            this._isAuthorized$.next(true);
             this._sessionDataService.set(token);
           }
         }),
@@ -40,6 +51,7 @@ export class Session {
         tap(({ token }) => {
           if (token) {
             this.token = token;
+            this._isAuthorized$.next(true);
             this._sessionDataService.set(token);
           }
         }),
@@ -50,6 +62,7 @@ export class Session {
   public logout(): Observable<void> {
     this._sessionDataService.clear();
     this.token = null;
+    this._isAuthorized$.next(false);
 
     return of(null);
   }

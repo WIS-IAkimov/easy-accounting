@@ -10,10 +10,16 @@
         <button mat-icon-button>
           <mat-icon>home</mat-icon>
         </button>
-        <a mat-flat-button class="mx-1 text-uppercase bg-transparent" routerLink="auth/login">Features</a>
-        <a mat-flat-button class="mx-1 text-uppercase bg-transparent" routerLink="auth/login">Pricing</a>
-        <a mat-flat-button class="mx-1 text-uppercase bg-transparent" routerLink="auth/login">Contact us</a>
-        <a mat-flat-button class="mx-1 text-uppercase bg-transparent" routerLink="auth/login">Sign in</a>
+        <a mat-flat-button class="mx-1 text-uppercase bg-transparent" >Features</a>
+        <a mat-flat-button class="mx-1 text-uppercase bg-transparent">Pricing</a>
+        <a mat-flat-button class="mx-1 text-uppercase bg-transparent">Contact us</a>
+        <ng-container *ngIf="isAuth$ | async else signIn">
+          <button mat-flat-button class="mx-1 text-uppercase bg-transparent" (click)="signOut()">Sign out</button>
+        </ng-container>
+
+        <ng-template #signIn>
+          <a mat-flat-button class="mx-1 text-uppercase bg-transparent" routerLink="auth/login">Sign in</a>
+        </ng-template>
         <button mat-flat-button color="primary" class="mx-1 text-uppercase">Try it free</button>
       </div>
     </mat-toolbar>
