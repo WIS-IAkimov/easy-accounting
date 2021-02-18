@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-main',
@@ -6,11 +6,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./main.container.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MainContainer implements OnInit {
+export class MainContainer {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  public constructor() { }
 }

@@ -6,11 +6,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MainHeaderComponent } from './components/main-header/main-header.component';
 
 
 
 @NgModule({
-  declarations: [MainContainer, NavbarComponent],
+  declarations: [MainContainer, NavbarComponent, MainHeaderComponent],
   imports: [
     CommonModule,
     MainRoutingModule,
