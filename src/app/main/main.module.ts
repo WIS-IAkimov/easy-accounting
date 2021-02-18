@@ -10,11 +10,12 @@ import { MainHeaderComponent } from './components/main-header/main-header.compon
 import { BusinessSphereComponent } from './components/business-sphere/business-sphere.component';
 import { BusinessCategoryCardComponent } from './components/business-category-card/business-category-card.component';
 import { MatCardModule } from '@angular/material/card';
+import { BusinessToolsComponent } from './components/business-tools/business-tools.component';
 
 
 
 @NgModule({
-  declarations: [MainContainer, NavbarComponent, MainHeaderComponent, BusinessSphereComponent, BusinessCategoryCardComponent],
+  declarations: [MainContainer, NavbarComponent, MainHeaderComponent, BusinessSphereComponent, BusinessCategoryCardComponent, BusinessToolsComponent],
   imports: [
     CommonModule,
     MainRoutingModule,
