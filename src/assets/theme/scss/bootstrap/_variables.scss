@@ -1,40 +1,40 @@
-@use 'sass:map';
-
-@import '../theme/variables';
-
-
-$enable-gradients: false;
-
-$primary: map.get($mat-pink, 500);
-$accent: map.get($mat-indigo, 500);
-$danger: map.get($mat-red, 500);
-$success: map.get($mat-light-green, 500);
-$info: map.get($mat-light-blue, 500);
-$warning: map.get($mat-deep-orange, 500);
-
-$theme-colors: (
-  primary: $primary,
-  accent: $accent,
-  danger: $danger,
-  success: $success,
-  info: $info,
-  warning: $warning,
-);
-
-$grid-columns: 12;
-$grid-row-columns: 6;
-
-$grid-gutter-width: 1rem;
-$grid-gutter-width-dense: .5rem;
-
-$spacer: .5rem;
-$spacers: (
-  1: ($spacer * .5),
-  2: $spacer,
-  3: ($spacer * 1.5),
-  4: ($spacer * 2),
-  5: ($spacer * 3)
-);
+//@use 'sass:map';
+//
+//@import '../theme/variables';
+//
+//
+//$enable-gradients: false;
+//
+//$primary: map.get($mat-pink, 500);
+//$accent: map.get($mat-indigo, 500);
+//$danger: map.get($mat-red, 500);
+//$success: map.get($mat-light-green, 500);
+//$info: map.get($mat-light-blue, 500);
+//$warning: map.get($mat-deep-orange, 500);
+//
+//$theme-colors: (
+//  primary: $primary,
+//  accent: $accent,
+//  danger: $danger,
+//  success: $success,
+//  info: $info,
+//  warning: $warning,
+//);
+//
+//$grid-columns: 12;
+//$grid-row-columns: 6;
+//
+//$grid-gutter-width: 1rem;
+//$grid-gutter-width-dense: .5rem;
+//
+//$spacer: .5rem;
+//$spacers: (
+//  1: ($spacer * .5),
+//  2: $spacer,
+//  3: ($spacer * 1.5),
+//  4: ($spacer * 2),
+//  5: ($spacer * 3)
+//);
 
 $grid-breakpoints: (
   xs: 0,
@@ -43,37 +43,37 @@ $grid-breakpoints: (
   lg: 1280px,
   xl: 1920px
 );
+//
+//$container-max-widths: (
+//  sm: 540px,
+//  md: 720px,
+//  lg: 960px,
+//  xl: 1140px
+//);
+//
+//$sizes: (
+//  25: 25%,
+//  50: 50%,
+//  75: 75%,
+//  100: 100%,
+//  auto: auto
+//);
 
-$container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1140px
-);
-
-$sizes: (
-  25: 25%,
-  50: 50%,
-  75: 75%,
-  100: 100%,
-  auto: auto
-);
-
-$border-width: 1px;
-
-$border-radius: .25rem;
-$border-radius-lg: .3rem;
-$border-radius-sm: .2rem;
-
-$rounded-pill: 50rem;
-
-$font-family-base: Roboto, sans-serif;
-
-$font-weight-lighter: lighter;
-$font-weight-light: 300;
-$font-weight-normal: 400;
-$font-weight-bold: 500;
-$font-weight-bolder: bolder;
-
-$zindex-sticky: 1020;
-$zindex-fixed: 1030;
+//$border-width: 1px;
+//
+//$border-radius: .25rem;
+//$border-radius-lg: .3rem;
+//$border-radius-sm: .2rem;
+//
+//$rounded-pill: 50rem;
+//
+//$font-family-base: Roboto, sans-serif;
+//
+//$font-weight-lighter: lighter;
+//$font-weight-light: 300;
+//$font-weight-normal: 400;
+//$font-weight-bold: 500;
+//$font-weight-bolder: bolder;
+//
+//$zindex-sticky: 1020;
+//$zindex-fixed: 1030;
