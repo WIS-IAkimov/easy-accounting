@@ -11,11 +11,13 @@ import { BusinessSphereComponent } from './components/business-sphere/business-s
 import { BusinessCategoryCardComponent } from './components/business-category-card/business-category-card.component';
 import { MatCardModule } from '@angular/material/card';
 import { BusinessToolsComponent } from './components/business-tools/business-tools.component';
-
+import { FeedbacksComponent } from './components/feedbacks/feedbacks.component';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
+import { FeedbackCardComponent } from './components/feedback-card/feedback-card.component';
 
 
 @NgModule({
-  declarations: [MainContainer, NavbarComponent, MainHeaderComponent, BusinessSphereComponent, BusinessCategoryCardComponent, BusinessToolsComponent],
+  declarations: [MainContainer, NavbarComponent, MainHeaderComponent, BusinessSphereComponent, BusinessCategoryCardComponent, BusinessToolsComponent, FeedbacksComponent, FeedbackCardComponent],
   imports: [
     CommonModule,
     MainRoutingModule,
@@ -23,6 +25,8 @@ import { BusinessToolsComponent } from './components/business-tools/business-too
     MatIconModule,
     MatToolbarModule,
     MatCardModule,
+    IvyCarouselModule,
   ]
 })
-export class MainModule { }
+export class MainModule {
+}
