@@ -7,17 +7,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MainHeaderComponent } from './components/main-header/main-header.component';
+import { BusinessSphereComponent } from './components/business-sphere/business-sphere.component';
+import { BusinessCategoryCardComponent } from './components/business-category-card/business-category-card.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 
 @NgModule({
-  declarations: [MainContainer, NavbarComponent, MainHeaderComponent],
+  declarations: [MainContainer, NavbarComponent, MainHeaderComponent, BusinessSphereComponent, BusinessCategoryCardComponent],
   imports: [
     CommonModule,
     MainRoutingModule,
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
+    MatCardModule,
   ]
 })
 export class MainModule { }
