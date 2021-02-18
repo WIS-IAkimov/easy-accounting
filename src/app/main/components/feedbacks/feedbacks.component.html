@@ -1,0 +1,24 @@
+<div class="container">
+  <h1 class="text-center text-indigo mb-5">What people say about us</h1>
+
+  <carousel
+    objectFit="cover"
+    cellsToShow="1"
+    [height]="320"
+    [cellWidth]="'100%'"
+    [dots]="true"
+    [loop]="true">
+    <ng-container *ngFor="let feedback of feedbacks">
+      <div class="carousel-cell">
+        <app-feedback-card
+          [name]="feedback.name"
+          [position]="feedback.position"
+          [address]="feedback.address"
+          [comment]="feedback.comment"
+          [imageUrl]="feedback.imageUrl">
+        </app-feedback-card>
+      </div>
+    </ng-container>
+  </carousel>
+
+</div>

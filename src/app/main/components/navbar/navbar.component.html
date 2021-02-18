@@ -1,0 +1,37 @@
+<div class="container py-3">
+  <div class="row">
+    <mat-toolbar class="justify-content-between bg-transparent px-0">
+      <div>
+        <span class="text-blue">Easy </span>
+        <span class="text-pink">Accounting</span>
+      </div>
+
+      <div>
+        <button mat-icon-button>
+          <mat-icon>home</mat-icon>
+        </button>
+        <a mat-flat-button class="mx-1 text-uppercase bg-transparent" >Features</a>
+        <a mat-flat-button class="mx-1 text-uppercase bg-transparent">Pricing</a>
+        <a mat-flat-button class="mx-1 text-uppercase bg-transparent">Contact us</a>
+        <ng-container *ngIf="isAuth$ | async else signIn">
+          <button
+            mat-flat-button
+            class="mx-1 text-uppercase bg-transparent"
+            (click)="signOut()">
+            Sign out
+          </button>
+        </ng-container>
+
+        <ng-template #signIn>
+          <a
+            mat-flat-button
+            class="mx-1 text-uppercase bg-transparent"
+            routerLink="auth/login">
+            Sign in
+          </a>
+        </ng-template>
+        <button mat-flat-button color="primary" class="mx-1 text-uppercase">Try it free</button>
+      </div>
+    </mat-toolbar>
+  </div>
+</div>

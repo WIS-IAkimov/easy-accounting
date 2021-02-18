@@ -1,0 +1,16 @@
+.text-indigo {
+  color: #172c69;
+  font-weight: normal;
+}
+
+::ng-deep .carousel {
+  .carousel-dot {
+    border-color: #c4c4c4 !important;
+  }
+
+  .carousel-dot-active {
+    background-color: #c4c4c4 !important;;
+  }
+
+}
+

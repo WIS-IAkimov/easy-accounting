@@ -1,0 +1,29 @@
+.image-group {
+  margin: 24px 64px 0 0;
+
+  img {
+    z-index: 1;
+    border-radius: 16px;
+    transform: translate(64px, -24px);
+  }
+
+  .image-thumbnail {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #e91e63;
+    color: white;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .image-index {
+    font-size: 2rem;
+  }
+}
+
+.tool-card-title {
+  color: #d75894;
+}
