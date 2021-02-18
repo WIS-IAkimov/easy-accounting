@@ -1,13 +1,16 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Session } from '../../../auth';
+
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
+import { Session } from '../../../auth';
+
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent implements OnInit {
 
@@ -15,11 +18,12 @@ export class NavbarComponent implements OnInit {
 
   private readonly _destroy$ = new Subject<void>();
 
-  constructor(
+  public constructor(
     private readonly _session: Session,
-  ) { }
+  ) {
+  }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.isAuth$ = this._session.isAuthorized$;
   }
 

@@ -5,7 +5,7 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
   selector: 'app-feedback-card',
   templateUrl: './feedback-card.component.html',
   styleUrls: ['./feedback-card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeedbackCardComponent {
 
@@ -25,7 +25,7 @@ export class FeedbackCardComponent {
   @Input()
   public imageUrl: string;
 
-  constructor() {
+  public constructor() {
   }
 
 }

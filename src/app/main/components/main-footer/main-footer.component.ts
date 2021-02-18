@@ -1,10 +1,12 @@
-import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import {
+  Component, ChangeDetectionStrategy, Output, EventEmitter,
+} from '@angular/core';
 
 @Component({
   selector: 'app-main-footer',
   templateUrl: './main-footer.component.html',
   styleUrls: ['./main-footer.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainFooterComponent {
 

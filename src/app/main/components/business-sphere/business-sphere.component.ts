@@ -1,18 +1,15 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 
 @Component({
   selector: 'app-business-sphere',
   templateUrl: './business-sphere.component.html',
   styleUrls: ['./business-sphere.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BusinessSphereComponent implements OnInit {
+export class BusinessSphereComponent {
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
+  public constructor() {
   }
 
 }

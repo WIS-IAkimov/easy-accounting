@@ -6,7 +6,7 @@ import { MainContainer } from './containers/main/main.container';
 const routes: Routes = [
   {
     path: '',
-    component: MainContainer
+    component: MainContainer,
   },
 ];
 

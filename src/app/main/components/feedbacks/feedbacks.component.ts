@@ -5,7 +5,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-feedbacks',
   templateUrl: './feedbacks.component.html',
   styleUrls: ['./feedbacks.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeedbacksComponent implements OnInit {
 
@@ -17,10 +17,10 @@ export class FeedbacksComponent implements OnInit {
     imageUrl: string,
   }[]
 
-  constructor() {
+  public constructor() {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this._initData();
   }
 
@@ -32,7 +32,7 @@ export class FeedbacksComponent implements OnInit {
         address: 'Lahore Pakistan',
         comment: `Lorem Ipsum is simply dummy text of the printing and typesetting industry typesetting industry.
          Lorem Ipsum is simply dummy text of the printing and typesetting industry typesetting industry`,
-        imageUrl: 'assets/images/API-sprawl-security-concern-predictions-of-2021-from-Volterra-App-Developer-Magazine_z32m4w7g.jpg',
+        imageUrl: 'assets/images/avatar.jpg',
       },
       {
         name: 'Akram Mirza',
@@ -40,7 +40,7 @@ export class FeedbacksComponent implements OnInit {
         address: 'Lahore Pakistan',
         comment: `Lorem Ipsum is simply dummy text of the printing and typesetting industry typesetting industry.
          Lorem Ipsum is simply dummy text of the printing and typesetting industry typesetting industry`,
-        imageUrl: 'assets/images/API-sprawl-security-concern-predictions-of-2021-from-Volterra-App-Developer-Magazine_z32m4w7g.jpg',
+        imageUrl: 'assets/images/avatar.jpg',
       },
       {
         name: 'Akram Mirza',
@@ -48,8 +48,9 @@ export class FeedbacksComponent implements OnInit {
         address: 'Lahore Pakistan',
         comment: `Lorem Ipsum is simply dummy text of the printing and typesetting industry typesetting industry.
          Lorem Ipsum is simply dummy text of the printing and typesetting industry typesetting industry`,
-        imageUrl: 'assets/images/API-sprawl-security-concern-predictions-of-2021-from-Volterra-App-Developer-Magazine_z32m4w7g.jpg',
+        imageUrl: 'assets/images/avatar.jpg',
       },
-    ]
+    ];
   }
+
 }

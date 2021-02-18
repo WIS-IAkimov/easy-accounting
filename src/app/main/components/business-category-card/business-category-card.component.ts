@@ -1,13 +1,13 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
 
 @Component({
   selector: 'app-business-category-card',
   templateUrl: './business-category-card.component.html',
   styleUrls: ['./business-category-card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BusinessCategoryCardComponent implements OnInit {
+export class BusinessCategoryCardComponent {
 
   @Input()
   public imageUrl: string;
@@ -21,10 +21,7 @@ export class BusinessCategoryCardComponent implements OnInit {
   @Input()
   public index: number;
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
+  public constructor() {
   }
 
 }
