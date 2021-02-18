@@ -14,10 +14,13 @@ import { BusinessToolsComponent } from './components/business-tools/business-too
 import { FeedbacksComponent } from './components/feedbacks/feedbacks.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { FeedbackCardComponent } from './components/feedback-card/feedback-card.component';
+import { MainFooterComponent } from './components/main-footer/main-footer.component';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [MainContainer, NavbarComponent, MainHeaderComponent, BusinessSphereComponent, BusinessCategoryCardComponent, BusinessToolsComponent, FeedbacksComponent, FeedbackCardComponent],
+  declarations: [MainContainer, NavbarComponent, MainHeaderComponent, BusinessSphereComponent, BusinessCategoryCardComponent, BusinessToolsComponent, FeedbacksComponent, FeedbackCardComponent, MainFooterComponent],
   imports: [
     CommonModule,
     MainRoutingModule,
@@ -26,6 +29,8 @@ import { FeedbackCardComponent } from './components/feedback-card/feedback-card.
     MatToolbarModule,
     MatCardModule,
     IvyCarouselModule,
+    MatInputModule,
+    FormsModule,
   ]
 })
 export class MainModule {
