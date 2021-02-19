@@ -1,1 +1,5 @@
+<div class="d-flex justify-content-between align-items-center my-5 px-4">
+  <h2>Invoices</h2>
+  <a mat-flat-button color="primary" class="text-decoration-none" routerLink="create">New Invoice</a>
+</div>
 <app-invoice-table [columns]="columns" [invoices]="invoices$ | async"></app-invoice-table>
