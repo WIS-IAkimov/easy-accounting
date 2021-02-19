@@ -28,14 +28,14 @@ export class InvoiceService {
       );
   }
 
-  public create(data: unknown): Observable<IInvoice> {
+  public create(data: object): Observable<IInvoice> {
     return this._httpClient.post<IInvoiceResponse>('invoices', data)
       .pipe(
         map((response) => InvoiceMapper.fromJson(response)),
       );
   }
 
-  public edit(data: unknown, id: string): Observable<IInvoice> {
+  public edit(data: object, id: string): Observable<IInvoice> {
     return this._httpClient.put<IInvoiceResponse>(`invoice/${id}`, data)
       .pipe(
         map((response) => InvoiceMapper.fromJson(response)),

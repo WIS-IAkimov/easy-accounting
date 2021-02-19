@@ -4,7 +4,7 @@ export interface IInvoiceResponse {
   company_address: string;
   billing_company_name: string;
   billing_address: string;
-  sub_total: number;
+  subTotal: number;
   tax: number;
   paid_amount: number;
   total: number;
@@ -35,7 +35,7 @@ export class InvoiceMapper {
       billingCompanyName: data.billing_company_name,
       billingAddress: data.billing_address,
       billingNote: data.billing_note,
-      subTotal: data.sub_total,
+      subTotal: data.subTotal,
       tax: data.tax,
       paidAmount: data.paid_amount,
       total: data.total,
