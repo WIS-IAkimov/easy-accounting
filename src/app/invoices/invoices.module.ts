@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { InvoicesRoutingModule } from './invoices-routing.module';
 import { InvoiceListView } from './views/list/invoice-list.view';
-import { InvoiceListContainer } from './views/containers/list/invoice-list.container';
+import { InvoiceListContainer } from './containers/list/invoice-list.container';
 
 
 @NgModule({
