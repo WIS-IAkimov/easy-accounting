@@ -15,14 +15,14 @@ export class InvoiceService {
   ) { }
 
   public list(): Observable<IInvoice[]> {
-    return this._httpClient.get<IInvoiceResponse[]>('invoices')
+    return this._httpClient.get<IInvoiceResponse[]>('invoice')
       .pipe(
         map((response) => response.map((item) => InvoiceMapper.fromJson(item))),
       );
   }
 
   public get(id: string): Observable<IInvoice> {
-    return this._httpClient.get<IInvoiceResponse>(`invoices/${id}`)
+    return this._httpClient.get<IInvoiceResponse>(`invoice/${id}`)
       .pipe(
         map((response) => InvoiceMapper.fromJson(response)),
       );

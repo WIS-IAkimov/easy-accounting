@@ -9,15 +9,22 @@ import { InvoiceCreateContainer } from './containers/create/invoice-create.conta
 import { InvoiceFormComponent } from './components/form/invoice-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { InvoiceService } from './services/invoice.service';
+import { InvoiceTableComponent } from './components/table/invoice-table.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
-  declarations: [InvoiceListView, InvoiceListContainer, InvoiceCreateView, InvoiceCreateContainer, InvoiceFormComponent],
+  declarations: [InvoiceListView, InvoiceListContainer, InvoiceCreateView, InvoiceCreateContainer, InvoiceFormComponent, InvoiceTableComponent],
   imports: [
     CommonModule,
     InvoicesRoutingModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+  ],
+  providers: [
+    InvoiceService,
   ]
 })
 export class InvoicesModule { }

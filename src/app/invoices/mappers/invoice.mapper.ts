@@ -8,6 +8,7 @@ export interface IInvoiceResponse {
   tax: number;
   paid_amount: number;
   total: number;
+  created_at: number;
 
   billing_note?: string;
 }
@@ -21,6 +22,7 @@ export interface IInvoice {
   tax: number;
   paidAmount: number;
   total: number;
+  createdAt: Date;
 
   id?: string;
   billingNote?: string;
@@ -39,6 +41,7 @@ export class InvoiceMapper {
       tax: data.tax,
       paidAmount: data.paid_amount,
       total: data.total,
+      createdAt: new Date(data.created_at * 1000),
     })
   }
 }

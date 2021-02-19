@@ -1,0 +1,32 @@
+<mat-table [dataSource]="dataSource">
+
+  <!-- Client Column -->
+  <ng-container matColumnDef="client">
+    <mat-header-cell mat-header-cell *matHeaderCellDef>Client / Invoice number</mat-header-cell>
+    <mat-cell mat-cell *matCellDef="let element">
+      <div>{{ element.companyName }}</div>
+      <div>{{ element.id }}</div>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Description Column -->
+  <ng-container matColumnDef="description">
+    <mat-header-cell mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+    <mat-cell mat-cell *matCellDef="let element"> </mat-cell>
+  </ng-container>
+
+  <!-- Issue Date Column -->
+  <ng-container matColumnDef="issueDate">
+    <mat-header-cell mat-header-cell *matHeaderCellDef> Issue Date / Due Date </mat-header-cell>
+    <mat-cell mat-cell *matCellDef="let element"> {{element.createdAt | date: 'dd/MM/yyyy'}} </mat-cell>
+  </ng-container>
+
+  <!-- Amount Column -->
+  <ng-container matColumnDef="amount">
+    <mat-header-cell mat-header-cell *matHeaderCellDef> Amount / Status </mat-header-cell>
+    <mat-cell mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+  <mat-row mat-row *matRowDef="let row; columns: columns;"></mat-row>
+</mat-table>

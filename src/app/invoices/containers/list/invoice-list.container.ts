@@ -1,4 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { InvoiceService } from '../../services/invoice.service';
+import { Observable } from 'rxjs';
+import { IInvoice } from '../../mappers/invoice.mapper';
 
 @Component({
   selector: 'app-invoice-list',
@@ -8,9 +11,17 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class InvoiceListContainer implements OnInit {
 
-  constructor() { }
+  public invoices$: Observable<IInvoice[]>
 
-  ngOnInit(): void {
+  public readonly columns = ['client', 'description', 'issueDate', 'amount'];
+
+  public constructor(
+    private readonly _invoiceService: InvoiceService,
+  ) { }
+
+  public ngOnInit(): void {
+    this.invoices$ = this._invoiceService.list();
   }
+
 
 }
