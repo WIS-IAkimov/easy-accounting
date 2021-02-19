@@ -1,7 +1,7 @@
-<form [formGroup]="form" (ngSubmit)="create()">
-  <app-invoice-form></app-invoice-form>
-  <div>
+<form [formGroup]="form" (ngSubmit)="create()" class="p-5">
+  <app-invoice-form class="d-block pb-5"></app-invoice-form>
+  <div class="d-flex justify-content-between">
     <button mat-flat-button color="primary" type="button">Download Invoice</button>
-    <button mat-flat-button type="submit">Send Invoice</button>
+    <button mat-stroked-button type="submit">Send Invoice</button>
   </div>
 </form>

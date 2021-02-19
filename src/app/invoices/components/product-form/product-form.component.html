@@ -1,0 +1,55 @@
+<table class="mb-2">
+  <thead class="bg-indigo">
+    <tr>
+      <th class="w-50 font-weight-light p-2 text-white">Item</th>
+      <th class="font-weight-light p-2 text-center text-white">Quantity</th>
+      <th class="font-weight-light p-2 text-center text-white">Rate</th>
+      <th class="font-weight-light p-2 text-center text-white">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let group of formArray.controls" class="py-4">
+      <ng-container [formGroup]="group">
+        <td class="px-2">
+          <input
+            id="name"
+            type="text"
+            placeholder="Description of service or product"
+            formControlName="name"
+            class="form-control my-2">
+        </td>
+
+        <td class="px-2">
+          <input
+            id="quantity"
+            type="text"
+            min="1"
+            placeholder="1"
+            formControlName="quantity"
+            class="form-control my-2">
+        </td>
+
+        <td class="px-2">
+          <input
+            id="rate"
+            type="text"
+            placeholder="$0"
+            formControlName="rate"
+            class="form-control my-2">
+        </td>
+
+        <td class="px-2">
+          <input
+            id="amount"
+            type="text"
+            readonly
+            placeholder="USD$0.00"
+            formControlName="amount"
+            class="form-control my-2">
+        </td>
+      </ng-container>
+    </tr>
+  </tbody>
+</table>
+
+<button mat-flat-button color="accent" type="button" class="text-uppercase" (click)="add()">Add item</button>

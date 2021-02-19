@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-invoice-form',
@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class InvoiceFormComponent {
 
   public form: FormGroup;
+  public productsFrom: FormArray;
 
   public constructor(
     private readonly _formBuilder: FormBuilder
@@ -22,7 +23,33 @@ export class InvoiceFormComponent {
   }
 
   private _initForm(): void {
-    this.form = this._formBuilder.group({});
+    this.productsFrom = this._formBuilder.array([]);
+    this.addProduct();
+    this.form = this._formBuilder.group({
+      companyName: [null, Validators.required],
+      billingCompanyName: [null, Validators.required],
+      billingAddress: [null, Validators.required],
+      billingNote: null,
+      subTotal: null,
+      tax: null,
+      paidAmount: null,
+      total: null,
+      balance: null,
+      terms: null,
+      notes: null,
+      item: this.productsFrom,
+    });
+  }
+
+  public addProduct(): void {
+    const group = this._formBuilder.group({
+      name: null,
+      quantity: 1,
+      rate: 0,
+      amount: 0,
+    });
+
+    this.productsFrom.push(group);
   }
 
 }

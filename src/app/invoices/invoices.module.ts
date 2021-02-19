@@ -12,16 +12,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { InvoiceService } from './services/invoice.service';
 import { InvoiceTableComponent } from './components/table/invoice-table.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { ProductFormComponent } from './components/product-form/product-form.component';
 
 
 @NgModule({
-  declarations: [InvoiceListView, InvoiceListContainer, InvoiceCreateView, InvoiceCreateContainer, InvoiceFormComponent, InvoiceTableComponent],
+  declarations: [InvoiceListView, InvoiceListContainer, InvoiceCreateView, InvoiceCreateContainer, InvoiceFormComponent, InvoiceTableComponent, ProductFormComponent],
   imports: [
     CommonModule,
     InvoicesRoutingModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatTableModule,
+    MatInputModule,
   ],
   providers: [
     InvoiceService,

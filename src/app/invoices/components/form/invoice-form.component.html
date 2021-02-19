@@ -1,1 +1,165 @@
-<p>invoice-form works!</p>
+<ng-container [formGroup]="form">
+  <div class="d-flex justify-content-between mb-4">
+    <div>
+      <div class="mb-4">
+        <textarea
+          type="text"
+          rows="3"
+          placeholder="Who is this invoice from?"
+          formControlName="companyName"
+          class="form-control d-inline-block w-auto py-0 flex-grow-1">
+        </textarea>
+      </div>
+
+      <div class="d-flex">
+        <div class="mr-4">
+          <label for="billingCompanyName">Bill to</label>
+          <textarea
+            id="billingCompanyName"
+            type="text"
+            rows="3"
+            placeholder="Who is this invoice to?"
+            formControlName="billingCompanyName"
+            class="form-control w-auto py-0 flex-grow-1">
+          </textarea>
+        </div>
+
+        <div>
+          <label for="billingAddress">Ship to</label>
+          <textarea
+            id="billingAddress"
+            type="text"
+            rows="3"
+            placeholder="Address"
+            formControlName="billingAddress"
+            class="form-control w-auto py-0 flex-grow-1">
+          </textarea>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex flex-column align-items-end">
+      <div class="mb-2">
+        <label for="paymentTerms" class="mr-2">Payment Terms</label>
+        <input
+          id="paymentTerms"
+          type="text"
+          formControlName="subTotal"
+          class="form-control d-inline-block w-auto py-0 flex-grow-1">
+      </div>
+
+      <div class="mb-2">
+        <label for="issueDate" class="mr-2">Date of Issue</label>
+        <input
+          id="issueDate"
+          type="text"
+          formControlName="subTotal"
+          class="form-control d-inline-block w-auto py-0 flex-grow-1">
+      </div>
+
+      <div>
+        <label for="dueDate" class="mr-2">Due Date</label>
+        <input
+          id="dueDate"
+          type="text"
+          formControlName="subTotal"
+          class="form-control d-inline-block w-auto py-0 flex-grow-1">
+      </div>
+    </div>
+  </div>
+
+  <app-product-form class="d-block mb-4" [formArray]="productsFrom" (addItem)="addProduct()"></app-product-form>
+
+  <div class="d-flex justify-content-between">
+    <div class="flex-grow-1">
+      <div class="mb-2">
+        <label for="billingNote">Bill to</label>
+        <textarea
+          id="billingNote"
+          type="text"
+          rows="3"
+          placeholder="Notes -any relevant information not already covered"
+          formControlName="billingNote"
+          class="form-control">
+      </textarea>
+      </div>
+
+      <div class="mb-2">
+        <label for="terms">Terms</label>
+        <textarea
+          id="terms"
+          type="text"
+          rows="3"
+          placeholder="Terms and condition - late fees, payment methods, delivery schedule"
+          formControlName="terms"
+          class="form-control">
+      </textarea>
+      </div>
+
+      <div>
+        <label for="notes">Notes</label>
+        <textarea
+          id="notes"
+          type="text"
+          rows="3"
+          placeholder="Enter notes or bank transfer details (optional)"
+          formControlName="notes"
+          class="form-control">
+    </textarea>
+      </div>
+    </div>
+
+    <div class="flex-grow-1">
+      <div class="d-flex flex-column align-items-end mb-4">
+        <div class="mb-2">
+          <label for="subTotal" class="mr-2">Subtotal</label>
+          <input
+            id="subTotal"
+            type="text"
+            readonly
+            formControlName="subTotal"
+            class="form-control d-inline-block w-auto">
+        </div>
+
+        <div>
+          <label for="tax" class="mr-2">Tax</label>
+          <input
+            id="tax"
+            type="text"
+            formControlName="tax"
+            class="form-control d-inline-block w-auto">
+        </div>
+      </div>
+      <div class="d-flex flex-column align-items-end">
+        <div class="mb-2">
+          <label for="total" class="mr-2">Total</label>
+          <input
+            id="total"
+            type="text"
+            readonly
+            formControlName="total"
+            class="form-control d-inline-block w-auto">
+        </div>
+
+        <div class="mb-2">
+          <label for="paidAmount" class="mr-2">Amount paid</label>
+          <input
+            id="paidAmount"
+            type="text"
+            formControlName="paidAmount"
+            class="form-control d-inline-block w-auto">
+        </div>
+
+        <div>
+          <label for="balance" class="mr-2">Balance Due</label>
+          <input
+            id="balance"
+            type="text"
+            readonly
+            formControlName="balance"
+            class="form-control d-inline-block w-auto">
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
