@@ -29,7 +29,7 @@ export class InvoiceService {
   }
 
   public create(data: object): Observable<IInvoice> {
-    return this._httpClient.post<IInvoiceResponse>('invoices', data)
+    return this._httpClient.post<IInvoiceResponse>('invoice', data)
       .pipe(
         map((response) => InvoiceMapper.fromJson(response)),
       );
